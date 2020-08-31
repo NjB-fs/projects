@@ -1,0 +1,122 @@
+{% extends 'layouts/main.html' %}
+{% block title %}New Venue{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form method="post" class="form">
+      <h3 class="form-heading">List a new venue <a href="{{ url_for('index') }}" title="Back to homepage"><i class="fa fa-home pull-right"></i></a></h3>
+      <div class="form-group" >{{form.name(class_="form-control", placeholder="Enter venue name")}}
+          {% if form.name.errors %}
+            <ul class="errors">
+              {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="form-group">{{form.city(class_="form-control", placeholder="Enter venue name")}}
+          {% if form.city.errors %}
+            <ul class="errors">
+              {% for error in form.city.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="form-group">{{form.state(class_="form-control", placeholder="Enter venue name")}}
+          {% if form.state.errors %}
+            <ul class="errors">
+              {% for error in form.state.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="form-group">{{form.address(class_="form-control", placeholder="Venue Address")}}
+          {% if form.address.errors %}
+            <ul class="errors">
+              {% for error in form.address.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="form-group">{{form.phone.label}}{{form.phone(class_="form-control", placeholder="xxx-xxx-xxxx")}}
+          {% if form.phone.errors %}
+            <ul class="errors">
+              {% for error in form.phone.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="form-group">{{form.seeking_talent.label}}{{form.seeking_talent(class_="form-check")}}
+          {% if form.seeking_talent.errors %}
+            <ul class="errors">
+              {% for error in form.seeking_talent.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="form-group">{{form.talent_description.label}}{{form.talent_description(class_="form-control")}}
+          {% if form.talent_description.errors %}
+            <ul class="errors">
+              {% for error in form.talent_description.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="form-check">{{form.genres.label}} {{form.genres(class_="custom-select")}}
+          {% if form.genres.errors %}
+            <ul class="errors">
+              {% for error in form.genres.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+      <input type="submit" value="Create Venue" class="btn btn-primary btn-sm btn-block">
+      </form>
+     
+     
+     
+     
+     <div class="form-group">
+        <label for="name">Name</label>
+        {{ form.name(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+          <label>City & State</label>
+          <div class="form-inline">
+            <div class="form-group">
+              {{ form.city(class_ = 'form-control', placeholder='City', autofocus = true) }}
+            </div>
+            <div class="form-group">
+              {{ form.state(class_ = 'form-control', placeholder='State', autofocus = true) }}
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        {{ form.address(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+          <label for="phone">Phone</label>
+          {{ form.phone(class_ = 'form-control', placeholder='xxx-xxx-xxxx', autofocus = true) }}
+        </div>
+
+      <label for="genres">Genres</label>
+        <small>Ctrl+Click to select multiple</small>
+        {% for genre in genres %}
+        <option value="genre"></option>
+        {% endfor %}
+      </div> 
+      <div class="form-group">
+          <label for="Facebook Link">Facebook Link</label>
+          {{ form.facebook_link(class_ = 'form-control', placeholder='http://', id=form.state, autofocus = true) }}
+        </div>
+      <input type="submit" value="Create Venue" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
