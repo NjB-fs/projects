@@ -173,7 +173,7 @@ class ArtistForm(Form):
     facebook_link = StringField('Facebook link', validators=[URL()])
     website = StringField('website')
     seeking_venue = BooleanField('Seeking Venue')
-    venue_description = TextField('Venue Description')
+    seeking_description = TextField('Seeking Description')
     genres = SelectMultipleField(
         # TODO implement enum restriction
         'Genres', validators=[DataRequired()],
