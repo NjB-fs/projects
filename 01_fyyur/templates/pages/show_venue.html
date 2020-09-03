@@ -5,8 +5,12 @@
 	<div class="col-sm-6">
 		<h1 class="monospace">
 			{{ venue.name }}</br>
+			<div>
 			<a type="button" class="btn btn-primary" href="{{url_for('edit_venue', venue_id=venue.id)}}">Edit</a>
-      		<a type="button" class="btn btn-primary" href="{{url_for('delete_venue', venue_id=venue.id)}}">Delete</a>
+			<form action="{{url_for('delete_venue', venue_id=venue.id)}}" method = 'POST'>
+				<input type='submit' class="btn btn-primary" value='Delete'>
+				</form>
+			</div>
 		</h1>
 		<p class="subtitle">
 			ID: {{ venue.id }}
