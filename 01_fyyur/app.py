@@ -546,7 +546,7 @@ def create_show_submission():
   # DONE: on unsuccessful db insert, flash an error instead.
   # e.g., flash('An error occurred. Show could not be listed.')
   # see: http://flask.pocoo.org/docs/1.0/patterns/flashing/
- 
+
 
 @app.errorhandler(404)
 def not_found_error(error):
