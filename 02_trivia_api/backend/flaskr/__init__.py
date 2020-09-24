@@ -6,7 +6,7 @@ import random
 
 from models import setup_db, Question, Category
 
-
+QUESTIONS_PER_PAGE = 10
 
 def create_app(test_config=None):
   # create and configure the app
@@ -15,7 +15,7 @@ def create_app(test_config=None):
   CORS(app)
   
 
-  QUESTIONS_PER_PAGE = 10
+  # QUESTIONS_PER_PAGE = 10
   # page = request.args.get('page', 1, type=int)
   # start = (page-1)*QUESTIONS_PER_PAGE
   # end = start + QUESTIONS_PER_PAGE
@@ -147,17 +147,17 @@ def create_app(test_config=None):
   # Create a GET endpoint to get questions based on category. 
 
   @app.route('/categories/<int:category_id>/questions',methods= ['GET'])
-    def get_questions_by_category(category_id):  
-        page = request.args.get('page', 1, type=int)
-        start = (page-1) * QUESTIONS_PER_PAGE
-        end = page + QUESTIONS_PER_PAGE
-        questions = Question.query.filter(Question.category == category_id).all()
-        return jsonify({
-          'questions': questions[start:end],
-          'total_questions': len(questions),
-          'category': category_id,
-          # 'categories': categories_list
-        })
+  def get_questions_by_category(category_id):  
+      page = request.args.get('page', 1, type=int)
+      start = (page-1) * QUESTIONS_PER_PAGE
+      end = page + QUESTIONS_PER_PAGE
+      questions = Question.query.filter(Question.category == category_id).all()
+      return jsonify({
+        'questions': questions[start:end],
+        'total_questions': len(questions),
+        'category': category_id,
+        # 'categories': categories_list
+      })
 
 
   # TEST: In the "List" tab / main screen, clicking on one of the 
@@ -174,7 +174,7 @@ def create_app(test_config=None):
   # and return a random questions within the given category, 
   # if provided, and that is not one of the previous questions. 
 
-@app.route('/play',methods= ['POST'])
+  @app.route('/play',methods= ['POST'])
   
   
 
